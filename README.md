@@ -2,26 +2,19 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.1.
 
-## Development server
+## Purpose
+This projects is a cauldron of many Angular Features, it must not be used as a dependency but it can be used for training or trying new features all together.
+All the features are designed in order to be compatible with each other.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+It also takes inspiration from other libraries which are not included as dependencies for many reasons (they could be not-compatible or I may not like the way they're written!)
 
-## Code scaffolding
+See the project's homepage to have a list of all the features.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+[Work in progress]
 
-## Build
+## Useful commands
+Development server:
+`ng serve`
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+SSR with Angular Universal:
+`npm run build:ssr && npm run serve:ssr`
