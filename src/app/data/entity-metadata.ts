@@ -1,13 +1,9 @@
 import { EntityMetadataMap } from 'ngrx-data';
 
 const entityMetadata: EntityMetadataMap = {
-  Post: {}
+  User: {}
 };
 
-// Optional, list only the ones which shouldn't end with just an 's'
-const pluralNames = { Post: 'Posts' };
-
 export const entityConfig = {
-  entityMetadata,
-  pluralNames
+  entityMetadata
 };

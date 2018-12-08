@@ -4,19 +4,20 @@ import { CommonModule } from '@angular/common';
 import { DefaultDataServiceConfig, NgrxDataModule } from 'ngrx-data';
 import { entityConfig } from './entity-metadata';
 import { socketServices } from './socket';
+import { environment } from '../../environments/environment';
 
 const dataServiceConfig: DefaultDataServiceConfig = {
-  root: 'https://jsonplaceholder.typicode.com', // default root path to the server's web api
+  root: environment.endpoint
 };
 
 @NgModule({
   imports: [
     CommonModule,
-    NgrxDataModule.forRoot(entityConfig)
+    NgrxDataModule.forRoot(entityConfig),
   ],
   providers: [
     { provide: DefaultDataServiceConfig, useValue: dataServiceConfig },
     ...socketServices
   ]
 })
-export class DataModule { }
+export class DataModule {}

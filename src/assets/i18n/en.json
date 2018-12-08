@@ -1,7 +1,4 @@
 {
-  "SERVER_SIDE": {
-    "DESCRIPTION": "Try to refresh and inspect this page: you won't see any content in the root component."
-  },
   "I18N_TEST": {
     "DESCRIPTION": "This is a test page for i18n w/ ngx-translate. When the page is rendered server-side, it still works."
   }

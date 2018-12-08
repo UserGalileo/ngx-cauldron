@@ -11,12 +11,8 @@ const routes: Routes = [
         component: HomeComponent,
       },
       {
-        path: 'server-side',
-        loadChildren: './features/server-side/server-side.module#ServerSideModule'
-      },
-      {
-        path: 'client-side',
-        loadChildren: './features/client-side/client-side.module#ClientSideModule'
+        path: 'crud-test',
+        loadChildren: './features/crud-test/crud-test.module#CrudTestModule'
       },
       {
         path: 'socket-test',

@@ -1,7 +1,4 @@
 {
-  "SERVER_SIDE": {
-    "DESCRIPTION": "Prova a ricaricare e ispezionare questa pagina: non vedrai contenuti nel componente principale."
-  },
   "I18N_TEST": {
     "DESCRIPTION": "Questa è una pagina di test per i18n con ngx-translate. Quando la pagina è renderizzata lato server, funziona ancora."
   }

@@ -4,6 +4,7 @@
  */
 export const UNIVERSAL_ROUTES = [
   '/',
-  '/server-side',
-  '/server-side/*'
+  '/crud-test',
+  '/crud-test/*',
+  '/i18n-test'
 ];

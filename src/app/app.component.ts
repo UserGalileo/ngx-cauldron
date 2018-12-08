@@ -15,8 +15,7 @@ import { routerAnimation } from './core/animations/router.animations';
         <mat-toolbar>Menu</mat-toolbar>
         <mat-nav-list>
           <a mat-list-item routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-          <a mat-list-item routerLink="/client-side" routerLinkActive="active">Client Side</a>
-          <a mat-list-item routerLink="/server-side" routerLinkActive="active">Server Side</a>
+          <a mat-list-item routerLink="/crud-test" routerLinkActive="active">CRUD</a>
           <a mat-list-item routerLink="/socket-test" routerLinkActive="active">SocketIO</a>
           <a mat-list-item routerLink="/i18n-test" routerLinkActive="active">i18n</a>
         </mat-nav-list>

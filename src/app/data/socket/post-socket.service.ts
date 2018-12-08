@@ -16,24 +16,24 @@ export class PostSocketService {
 
   constructor(private socket: SocketService) {
     this.socket.join('post');
-    this.postAdded$ = this.socket.listen('[Post] Added');
-    this.postUpdated$ = this.socket.listen('[Post] Updated');
-    this.postDeleted$ = this.socket.listen('[Post] Deleted');
+    this.postAdded$ = this.socket.listen('[User] Added');
+    this.postUpdated$ = this.socket.listen('[User] Updated');
+    this.postDeleted$ = this.socket.listen('[User] Deleted');
     if (!env.production) {
       console.log('Watch out, PostSocketService is listening!');
     }
   }
 
   addPost(post) {
-    this.socket.emit('[Post] Add', post);
+    this.socket.emit('[User] Add', post);
   }
 
   updatePost(post) {
-    this.socket.emit('[Post] Update', post);
+    this.socket.emit('[User] Update', post);
   }
 
   deletePost(postId) {
-    this.socket.emit('[Post] Delete', postId);
+    this.socket.emit('[User] Delete', postId);
   }
 
 }
