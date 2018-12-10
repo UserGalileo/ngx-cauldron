@@ -12,6 +12,10 @@ export class PostEffects {
     private postSocket: PostSocketService
   ) {}
 
+  /**
+   * I don't want to use the basic ngrx-data actions myself
+   * because they're too low-level, for simplicity I use our services
+   */
   @Effect({ dispatch: false })
   postAdded$ = this.postSocket.postAdded$.pipe(
     tap(post => {

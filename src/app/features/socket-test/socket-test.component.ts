@@ -14,7 +14,7 @@ import { SocketService } from '../../core/socket/socket.service';
       [color]="isOn ? 'warn' : 'primary'"
       (click)="onStartStop(isOn)">{{ isOn ? 'Stop all sockets' : 'Start all sockets' }}</button>
     <mat-list>
-      <h3 mat-subheader>Posts</h3>
+      <h3 mat-subheader>"Post Added" events</h3>
       <mat-list-item *ngFor="let post of posts$ | async">
         <h4 mat-line>{{ post.title }}</h4>
         <p mat-line>{{ post.body }} </p>
@@ -38,6 +38,7 @@ export class SocketTestComponent {
   ) {
     this.posts$ = this.postService.entities$;
     this.socketService.connected$.subscribe(isOn => this.isOn = isOn);
+    this.socketService.disconnect();
   }
 
   onStartStop(isOn) {

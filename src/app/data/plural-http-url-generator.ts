@@ -31,6 +31,9 @@ export class PluralHttpUrlGenerator implements HttpUrlGenerator {
     let resourceUrls = this.knownHttpResourceUrls[entityName];
     if (!resourceUrls) {
       const nRoot = normalizeRoot(root);
+      /**
+       * URLS are ALWAYS plural by design in our API, let's force it!
+       */
       const pluralUrl = `${nRoot}/${this.pluralizer.pluralize(
         entityName
       )}/`.toLowerCase();
