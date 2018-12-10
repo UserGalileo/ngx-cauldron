@@ -3,10 +3,11 @@ import { HttpClient } from '@angular/common/http';
 import { MatDialog, MatSelect, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
-import { EntityCollectionService, EntityOp, EntityServices } from 'ngrx-data';
+import { environment } from '../../../environments/environment';
+import { EntityOp } from 'ngrx-data';
 import { User } from '../../data/models/user.model';
 import { CrudUserComponent } from './crud-user.component';
-import { environment } from '../../../environments/environment';
+import { UserService } from '../../data/services';
 
 @Component({
   selector: 'cn-crud-test',
@@ -44,16 +45,14 @@ import { environment } from '../../../environments/environment';
 })
 export class CrudTestComponent implements OnInit {
   users$: Observable<User[]>;
-  userService: EntityCollectionService<User>;
   @ViewChild('select') matSelect: MatSelect;
 
   constructor(
-    entityServices: EntityServices,
+    private userService: UserService,
     private http: HttpClient,
     public dialog: MatDialog,
     private snackBar: MatSnackBar
   ) {
-    this.userService = entityServices.getEntityCollectionService('User');
     this.users$ = this.userService.entities$;
   }
 

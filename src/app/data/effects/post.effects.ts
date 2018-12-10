@@ -1,21 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Effect } from '@ngrx/effects';
 import { tap } from 'rxjs/operators';
-import { EntityCollectionService, EntityServices } from 'ngrx-data';
-import { Post } from '../models/post.model';
 import { PostSocketService } from '../socket';
+import { PostService } from '../services';
 
 @Injectable()
 export class PostEffects {
 
-  private postService: EntityCollectionService<Post>;
-
   constructor(
-    private entityServices: EntityServices,
+    private postService: PostService,
     private postSocket: PostSocketService
-  ) {
-    this.postService = entityServices.getEntityCollectionService('Post');
-  }
+  ) {}
 
   @Effect({ dispatch: false })
   postAdded$ = this.postSocket.postAdded$.pipe(

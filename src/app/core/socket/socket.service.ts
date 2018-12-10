@@ -11,6 +11,8 @@ export abstract class SocketService {
   abstract leave(string): void;
   // Disconnect from the server
   abstract disconnect(): void;
+  // Connect from the server
+  abstract connect(): void;
   // Emit an event with some data
   abstract emit(string, any?): void;
   // Listen to an event
@@ -46,6 +48,10 @@ export class DefaultSocketService implements SocketService {
     });
   }
 
+  connect() {
+    this.socket.connect();
+  }
+
   disconnect() {
     this.socket.disconnect();
   }
@@ -55,7 +61,7 @@ export class DefaultSocketService implements SocketService {
   }
 
   listen(event: string): Observable<any> {
-    return new Observable( observer => {
+    return new Observable(observer => {
 
       this.socket.on(event, data => {
         observer.next(data);
@@ -72,6 +78,7 @@ export class NoopSocketService implements SocketService {
   join() {}
   leave() {}
   disconnect() {}
+  connect() {}
   emit() {}
   listen(): Observable<any> { return NEVER; }
 }
