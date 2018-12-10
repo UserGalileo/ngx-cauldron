@@ -1,10 +1,10 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NoopSocketService, SocketService } from './socket.service';
+import { DefaultSocketService, NoopSocketService, SocketService } from './socket.service';
 import { SOCKET_CONFIG, SocketConfig } from './config';
 
 export function socketFactory(config: SocketConfig) {
-  return config && config.baseUrl ? new SocketService(config) : new NoopSocketService();
+  return config && config.baseUrl ? new DefaultSocketService(config) : new NoopSocketService();
 }
 
 @NgModule({

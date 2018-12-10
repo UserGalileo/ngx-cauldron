@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { MatDialog, MatSelect, MatSnackBar } from '@angular/material';
 import { Observable } from 'rxjs';
+import { take } from 'rxjs/operators';
 import { EntityCollectionService, EntityOp, EntityServices } from 'ngrx-data';
 import { User } from '../../data/models/user.model';
-import { MatDialog } from '@angular/material';
 import { CrudUserComponent } from './crud-user.component';
-import { take } from 'rxjs/operators';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'cn-crud-test',
@@ -13,12 +15,13 @@ import { take } from 'rxjs/operators';
     <p>Try to refresh and inspect this page: you won't see any content in the root component.</p>
 
     <mat-form-field>
-      <mat-select placeholder="Number of users" value="3" (valueChange)="onUserChange($event)">
+      <mat-select #select placeholder="Number of users" value="3" (valueChange)="onUserChange($event)">
         <mat-option value="3">3</mat-option>
         <mat-option value="6">6</mat-option>
         <mat-option value="9">9</mat-option>
       </mat-select>
     </mat-form-field>
+    <button mat-raised-button color="accent" (click)="initializeAPI()">Initialize API</button>
 
     <mat-action-list *ngIf="users$ | async as users">
       <h3 mat-subheader>Users</h3>
@@ -34,15 +37,21 @@ import { take } from 'rxjs/operators';
     .title {
       font-size: 1.5rem;
     }
+    mat-form-field {
+      margin-right: 10px;
+    }
   `]
 })
 export class CrudTestComponent implements OnInit {
   users$: Observable<User[]>;
   userService: EntityCollectionService<User>;
+  @ViewChild('select') matSelect: MatSelect;
 
   constructor(
     entityServices: EntityServices,
-    public dialog: MatDialog
+    private http: HttpClient,
+    public dialog: MatDialog,
+    private snackBar: MatSnackBar
   ) {
     this.userService = entityServices.getEntityCollectionService('User');
     this.users$ = this.userService.entities$;
@@ -94,5 +103,14 @@ export class CrudTestComponent implements OnInit {
 
   deleteUser(id) {
     this.userService.delete(id);
+  }
+
+  initializeAPI() {
+    this.http.get(environment.endpoint + '/init').subscribe(() => {
+      const snackBarRef = this.snackBar.open('API was re-initialized!', 'Refresh', { duration: 5000 });
+      snackBarRef.onAction().subscribe(() => {
+        this.onUserChange(this.matSelect.value);
+      });
+    });
   }
 }

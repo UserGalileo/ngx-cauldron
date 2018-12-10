@@ -8,9 +8,9 @@ export interface Environment {
 }
 
 export const sharedEnvironment: Partial<Environment> = {
-  endpoint: 'https://reqres.in/api',
+  endpoint: 'http://localhost:8080/api',
   socket: {
-    baseUrl: '',
+    baseUrl: 'http://localhost:8080',
     config: {}
   }
 };

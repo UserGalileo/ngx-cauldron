@@ -1,7 +1,8 @@
 import { EntityMetadataMap } from 'ngrx-data';
 
 const entityMetadata: EntityMetadataMap = {
-  User: {}
+  User: {},
+  Post: {}
 };
 
 export const entityConfig = {
