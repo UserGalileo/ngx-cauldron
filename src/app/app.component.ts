@@ -3,6 +3,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { routerAnimation } from './core/animations/router.animations';
+import { AuthService } from './core/auth/auth.service';
 
 @Component({
   selector: 'cn-root',
@@ -31,6 +32,10 @@ import { routerAnimation } from './core/animations/router.animations';
             <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
           </button>
           <span>Angular {{ version }} - Cauldron</span>
+          <span style="flex: 1 1 auto"></span>
+          <button mat-button (click)="onProfileClick()">
+            {{ (auth.isAuthenticated$ | async) ? 'Profile' : 'Login' }}
+          </button>
         </mat-toolbar>
         <!-- Add Content Here -->
         <div class="main-wrapper" [@routerAnimation]="outlet.isActivated && outlet.activatedRoute">
@@ -71,5 +76,14 @@ export class AppComponent {
     map(result => result.matches)
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    public auth: AuthService
+  ) {}
+
+  onProfileClick() {
+    if (this.auth.isAuthenticated$.getValue()) {
+
+    }
+  }
 }

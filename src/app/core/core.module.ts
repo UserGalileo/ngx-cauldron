@@ -7,6 +7,7 @@ import { environment as env } from '../../environments/environment';
 import { SocketModule } from './socket/socket.module';
 import { InterceptorsModule } from './interceptors/interceptors.module';
 import { I18nModule } from './i18n/i18n.module';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { I18nModule } from './i18n/i18n.module';
     CoreStoreModule,
     SocketModule.forRoot(env.socket),
     InterceptorsModule,
-    I18nModule
+    I18nModule,
+    AuthModule.forRoot()
   ]
 })
 export class CoreModule {

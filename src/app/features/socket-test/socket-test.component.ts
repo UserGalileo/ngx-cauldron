@@ -13,17 +13,20 @@ import { SocketService } from '../../core/socket/socket.service';
       mat-raised-button
       [color]="isOn ? 'warn' : 'primary'"
       (click)="onStartStop(isOn)">{{ isOn ? 'Stop all sockets' : 'Start all sockets' }}</button>
-    <mat-list>
-      <h3 mat-subheader>"Post Added" events</h3>
-      <mat-list-item *ngFor="let post of posts$ | async">
-        <h4 mat-line>{{ post.title }}</h4>
-        <p mat-line>{{ post.body }} </p>
-      </mat-list-item>
-    </mat-list>
+    <div style="height: 20px"></div>
+    <mat-card *ngFor="let post of posts$ | async">
+      <mat-card-title>{{ post.title }}</mat-card-title>
+      <mat-card-content>{{ post.body }}</mat-card-content>
+    </mat-card>
   `,
   styles: [`
     .title {
       font-size: 1.5rem;
+    }
+    mat-card {
+      width: 200px;
+      display: inline-block;
+      margin: 10px;
     }
   `]
 })
